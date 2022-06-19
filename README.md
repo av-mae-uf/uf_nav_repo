@@ -1,1 +1,14 @@
-# uf_nav
+## three ros2 packages: 
+- uf_nav
+- uf_nav_interfaces
+- uf_py_templates
+## installation:
+1. From your 'home' directory, create your ROS2 development workspace directory
+   - mkdir dev_ws_uf
+2. Move into this directory and create an 'src' directory
+   - cd dev_ws_uf
+   - mkdir src
+3. Move into the src directory
+   - cd src
+4. Download the three package directories from github
+   - type command here

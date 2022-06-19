@@ -11,4 +11,4 @@
 3. Move into the src directory
    - cd src
 4. Download the three package directories from github
-   - type command here
+   - git clone https://github.com/av-mae-uf/uf_nav_repo.git

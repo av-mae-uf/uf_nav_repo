@@ -1,0 +1,5 @@
+---
+int16 num_route_poses
+geometry_msgs/Pose[200] mypose
+int16[200]  state
+int16    want_loop

@@ -1,0 +1,7 @@
+int16      a
+---
+float64[3]  pt
+float64     heading_rad
+int16       state
+float64     w1_for_subsequent_segment
+float64     w2_for_subsequent_segment

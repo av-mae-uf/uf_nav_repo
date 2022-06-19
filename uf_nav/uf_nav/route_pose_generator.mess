@@ -1,0 +1,78 @@
+from uf_interfaces.srv import GetRoutePoses     # CHANGE
+
+import rclpy
+from rclpy.node import Node
+
+import os
+import math
+import numpy as np
+
+from uf_nav.uf_nav_support import *
+
+D2R = math.pi/180.0
+R2D = 180.0/math.pi
+
+route_pose = []
+
+class RoutePoseGenerator(Node):
+
+    def __init__(self):
+        super().__init__('route_pose_generator')
+        self.srv = self.create_service(GetRoutePoses, 'get_route_poses', self.get_route_poses_callback)        # CHANGE
+        self.declare_parameter('pose_data_file', 'path_list.txt')
+
+    def get_route_poses_callback(self, request, response):
+        self.get_logger().info('Incoming request for route points.\n' ) # CHANGE
+
+        num_poses = len(route_pose)
+        response.num_route_poses = num_poses
+
+        for i in range(num_poses):
+            response.mypose[i].position.x = route_pose[i].pt[0]
+            response.mypose[i].position.y = route_pose[i].pt[1]
+            response.mypose[i].position.z = route_pose[i].pt[2]
+            response.mypose[i].orientation.w = math.cos(route_pose[i].heading_rad/2.0)
+            response.mypose[i].orientation.x = 0.0
+            response.mypose[i].orientation.y = 0.0
+            response.mypose[i].orientation.z = math.sin(route_pose[i].heading_rad/2.0)
+            response.state[i] = route_pose[i].state
+
+        return response
+
+def main(args=None):
+    rclpy.init(args=args)
+
+    cnt = 0
+
+    if os.path.isfile("/home/cimar/dev_ws_uf/src/uf_nav/my_data/path_list.txt"):
+        fp = open("/home/cimar/dev_ws_uf/src/uf_nav/my_data/path_list.txt", "r")
+    else:
+        my_file= self.get_parameter('my_data_file')
+        if os.path.isfile(my_file):
+            fp = open(myfile, "r")
+    
+    for x in fp:
+        if x[0] == '#':
+            continue
+        else:
+            cnt = cnt + 1
+            a = x.split(',')
+            myptx = float(a[0])
+            mypty = float(a[1])
+            myptz = 0.0
+            myheadingrad = float(a[2])*D2R
+            myw1 = 1.0
+            myw2 = 1.0
+            mystate = int(a[3])
+            route_pose.append(route_pose_class(np.array([myptx,mypty, myptz]), myheadingrad, mystate, myw1, myw2))
+            
+    fp.close()
+
+    route_pose_generator = RoutePoseGenerator()
+
+    rclpy.spin(route_pose_generator)
+
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()

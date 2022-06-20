@@ -23,4 +23,5 @@
    - source install/setup.bash
 ## use launch file to start the four nodes in uf_nav package
 - ros2 launch uf_nav uf_nav_launch.py
+- If all goes well, you will have a vehicle (arrow) moving along a course.  The look-ahead-pose and the point on the path closest to the vehicle position are displayed as coordinate systems.  Three views are available under the 'Views' menu on the right.
 

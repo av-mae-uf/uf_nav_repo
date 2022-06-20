@@ -119,7 +119,6 @@ def create_route_segments(route_poses, want_loop):
     length = 20.0
     #state = uf_dict["END_PLUS_ONE"]
     state = myState.END_PLUS_ONE.value
-    print('state type is : ', type(state), ', ',state )
 
     route_segments.append(route_segment_class(p0, p1, p2, p3, w1, w2, length, state))
   
@@ -438,9 +437,6 @@ def update_vehicle_pose(old_position:np.array, old_heading_deg:float, rad_of_cur
                         Svec[0] *math.sin(-rotation_ang_rad) + Svec[1]*math.cos(-rotation_ang_rad), \
                         0.0])
       new_position = center_pt + temp
-    fp = open('/home/cimar/dev_ws_uf/src/uf_nav/my_data/output/veh_sim_data.txt', "a")
-    print('new_heading_deg = ', new_heading_deg, ' rad of curvature = ', rad_of_curvature, file=fp)
-    fp.close()
 
   return [new_position, new_heading_deg]
 
@@ -454,10 +450,6 @@ def get_rad_of_curvature_to_carrot(vehicle_point, vehicle_heading_rad, look_ahea
   # outputs-  radius of curvature
   #           driveme, the route segment that was created to move towards the carrot
 
-  fp = open("/home/cimar/dev_ws_uf/src/uf_nav/my_data/output/debug_get_rad_to_carrot.txt", "a")
-
-  #print('veh pt = ', vehicle_point[0], ', ', vehicle_point[1], ', ', vehicle_point[2], ' veh head deg = ', vehicle_heading_rad*R2D, file=fp)
-
   p0 = vehicle_point
   p3 = look_ahead_point
 
@@ -468,13 +460,10 @@ def get_rad_of_curvature_to_carrot(vehicle_point, vehicle_heading_rad, look_ahea
 
   # p0, p1, p2, p3, w1, w2, length, state
   
-  print('p0 = ', p0, ', p1 = ', p1, ', p2 = ', p2, ', p3 = ', p3, file=fp)
-  
   driveme = route_segment_class(p0, p1, p2, p3, 1.0, 1.0, 8.0, 0)
 
   radius_of_curvature = get_radius_at_u_equals_0(driveme)
-  print('rad of curv = ', radius_of_curvature, file=fp)
-  fp.close()
+  
   return [radius_of_curvature, driveme]
 
 #########################################################################  

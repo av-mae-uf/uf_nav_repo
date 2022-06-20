@@ -12,6 +12,7 @@
    - cd src
 4. Download the three package directories from github
    - git clone https://github.com/av-mae-uf/uf_nav_repo.git
+   - Note that you will have a new directory named uf_nav_repo in your src directory.  The three packages (uf_nav, uf_nav_interfaces, and uf_py_templates) will be in this directory.
 ## build:
 1. Change directories to your development workspace directory
    - cd

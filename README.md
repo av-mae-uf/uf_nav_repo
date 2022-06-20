@@ -12,3 +12,12 @@
    - cd src
 4. Download the three package directories from github
    - git clone https://github.com/av-mae-uf/uf_nav_repo.git
+## build:
+1. Change directories to your development workspace directory
+   - cd
+   - cd dev_ws_uf
+2. Build the three packages
+   - colcon build
+## use launch file to start the four nodes in uf_nav package
+- ros2 launch uf_nav uf_nav_launch.py
+

@@ -18,6 +18,8 @@
    - cd dev_ws_uf
 2. Build the three packages
    - colcon build
+3. While in your development workspace directory, source the workspace
+   - source install/setup.bash
 ## use launch file to start the four nodes in uf_nav package
 - ros2 launch uf_nav uf_nav_launch.py
 

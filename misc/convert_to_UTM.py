@@ -1,8 +1,8 @@
 # Call this program as follows:
 #         py convert_to_UTM.py  input_file.txt  output_file.txt
 #
-# This program opens the file 'input_file.txt' which has lattitude and longitude data on each line
-# where the values are separated by a comma.  Each lattitude/longitude pair is converted to UTM coordinates.
+# This program opens the file 'input_file.txt' which has latitude and longitude data on each line
+# where the values are separated by a comma.  Each latitude/longitude pair is converted to UTM coordinates.
 # The file 'output_file.txt' will have the Easting, Northing, Zone Number, and Zone Letter values on each line.
 
 import utm

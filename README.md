@@ -25,3 +25,5 @@
 - ros2 launch uf_nav uf_nav_launch.py
 - If all goes well, you will have a vehicle (arrow) moving along a course.  The look-ahead-pose and the point on the path closest to the vehicle position are displayed as coordinate systems.  Three views are available under the 'Views' menu on the right.
 
+## notes:
+1. The misc directory contains a python program named convert_to_UTM.  The program is run as *python3 convert_to_UTM lat_long_input.csv UTM_output.csv*.  This program converts an input file that has lat/long data separated by a comma to UTM coordinates, separated by a comma.

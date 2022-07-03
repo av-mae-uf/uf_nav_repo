@@ -52,6 +52,5 @@ def main():
         if (fp_out !=0):
             fp_out.close()
 
-
 if __name__ == '__main__':
     main()
